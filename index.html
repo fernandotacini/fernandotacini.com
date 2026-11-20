@@ -36,7 +36,7 @@ h3{font-size:22px;font-weight:700;margin-bottom:8px}
 em{font-style:normal;color:var(--y)}
 p{color:var(--mut);margin-bottom:16px}
 p strong{color:#fff}
-section{padding:88px 0}
+section{padding:88px 0;scroll-margin-top:64px}
 .alt{background:var(--bg2)}
 .tag{display:inline-block;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--b);border:1.5px solid #3b6fd6;border-radius:30px;padding:6px 16px;margin-bottom:20px}
 .btn{display:inline-block;background:var(--y);color:#111;font-family:'Fira Sans',sans-serif;font-weight:800;font-size:19px;text-decoration:none;padding:17px 28px;border-radius:12px;box-shadow:0 10px 30px rgba(255,210,63,.22);transition:transform .15s}
@@ -44,7 +44,7 @@ section{padding:88px 0}
 .ghost{display:inline-block;color:#fff;font-weight:700;text-decoration:none;padding:16px 22px;border:1.5px solid var(--line);border-radius:12px}
 .ghost:hover{border-color:var(--b)}
 /* nav */
-nav{position:sticky;top:0;z-index:10;background:rgba(14,23,38,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(38,56,90,.6)}
+nav{position:sticky;top:0;z-index:10;background:rgba(14,23,38,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(38,56,90,.6)}
 nav .w{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{font-family:'Fira Sans';font-weight:900;font-size:20px;color:#fff;text-decoration:none}
 .logo span{color:var(--y)}
@@ -57,8 +57,8 @@ nav .links a.cta{background:var(--y);color:#111;font-weight:700;padding:9px 16px
 .hero h1{font-size:clamp(40px,5.8vw,66px);font-weight:900;margin-bottom:22px}
 .hero .sub{font-size:21px;color:#c9d3e4;margin-bottom:30px}
 .acts{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.photo{position:relative}
-.photo img{width:100%;border-radius:22px;display:block;box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.photo{position:relative;max-width:400px;justify-self:end}
+.photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:22px;display:block;box-shadow:0 30px 70px rgba(0,0,0,.5)}
 .photo .badge{position:absolute;left:-18px;bottom:28px;background:#fff;color:#111;border-radius:14px;padding:12px 16px;font-size:14px;box-shadow:0 16px 40px rgba(0,0,0,.35);line-height:1.35}
 .photo .badge b{display:block;font-family:'Fira Sans';font-size:17px}
 .strip{display:flex;gap:28px;flex-wrap:wrap;margin-top:34px;font-size:14px;color:#8fa0bd}
@@ -66,7 +66,7 @@ nav .links a.cta{background:var(--y);color:#111;font-weight:700;padding:9px 16px
 /* story */
 .quote{font-family:'Fira Sans';font-weight:800;font-size:clamp(24px,3vw,32px);color:#fff;border-left:4px solid var(--y);padding-left:20px;margin:28px 0;line-height:1.2}
 /* method */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
 .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
 .step b{font-family:'Fira Sans';font-size:30px;color:var(--y);display:block;margin-bottom:10px}
 .step p{font-size:16px;margin:0}
@@ -91,9 +91,25 @@ nav .links a.cta{background:var(--y);color:#111;font-weight:700;padding:9px 16px
 .lead ul{list-style:none;display:grid;gap:9px;margin:10px 0 0}
 .lead li{color:#d6deeb;font-size:16px;padding-left:24px;position:relative}
 .lead li:before{content:"→";position:absolute;left:0;color:var(--y)}
+/* formulário de captação */
+.lf{display:grid;gap:12px;background:rgba(14,23,38,.55);border:1px solid var(--line);border-radius:16px;padding:24px;position:relative}
+.lf .ft{font-family:'Fira Sans';font-weight:800;font-size:20px;color:#fff;margin:0 0 2px}
+.lf label{display:grid;gap:6px;font-size:14px;font-weight:700;color:#e9eef7}
+.lf label small{font-weight:500;color:var(--mut)}
+.lf input[type=text],.lf input[type=email],.lf input[type=tel]{font:inherit;font-size:17px;color:#fff;background:#0b1320;border:1.5px solid var(--line);border-radius:10px;padding:13px 14px;width:100%;-webkit-appearance:none;appearance:none}
+.lf input::placeholder{color:#5f6f8a}
+.lf input:focus{outline:none;border-color:var(--y)}
+.lf .ck{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:13.5px;color:var(--mut);line-height:1.45;cursor:pointer}
+.lf .ck input{width:18px;height:18px;margin-top:2px;accent-color:var(--y);flex:none}
+.lf .btn{border:0;cursor:pointer;width:100%;text-align:center;margin-top:4px}
+.lf .btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.fm{font-size:14px;margin:0;min-height:0}
+.fm.err{color:#ff9b9b}
+.priv{font-size:12.5px;color:#6f7f99;margin:0;text-align:center}
 /* about */
 .me{display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:start}
-.me img{width:100%;border-radius:18px}
+.me img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:18px}
 /* contact */
 .ct{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
 .ct a{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;text-decoration:none;display:block}
@@ -102,17 +118,29 @@ nav .links a.cta{background:var(--y);color:#111;font-weight:700;padding:9px 16px
 .ct span{color:var(--mut);font-size:15px}
 footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:#6f7f99;text-align:center}
 .c{text-align:center}
+@media(max-width:1000px){
+.steps{grid-template-columns:repeat(2,1fr)}
+}
 @media(max-width:860px){
 body{font-size:17px}
 section{padding:60px 0}
 nav .links a:not(.cta){display:none}
-.hg,.steps,.offers,.lead,.me,.ct{grid-template-columns:1fr!important}
+.hg,.steps,.offers,.lead,.me,.ct{grid-template-columns:1fr}
 .soon{flex-direction:column;align-items:stretch;text-align:left}
-.hero{padding:40px 0 60px}
-.photo{max-width:330px;margin:0 auto}
-.photo .badge{left:10px}
-.lead{padding:28px}
-.me img{max-width:200px}
+/* hero no celular: título e botões na primeira tela; foto vira um selo pequeno acima do título */
+.hero{padding:26px 0 52px}
+.hg{gap:20px}
+.hg>.photo{order:-1;justify-self:start;max-width:none;display:flex;align-items:center;gap:14px}
+.photo img{width:64px;height:64px;aspect-ratio:1;border-radius:50%;object-position:50% 18%;border:2px solid var(--y);box-shadow:none}
+.photo .badge{position:static;background:none;color:#a9b6cc;box-shadow:none;padding:0;font-size:14px;border-radius:0}
+.photo .badge b{color:#fff;font-size:16px}
+.hero h1{font-size:clamp(36px,10vw,44px)}
+.hero .sub{font-size:18px}
+.strip{gap:10px 18px;margin-top:26px}
+.lead{padding:26px 20px;gap:26px}
+.lf{padding:20px 16px}
+.me{gap:20px}
+.me img{max-width:120px;aspect-ratio:1;border-radius:50%;object-position:50% 18%}
 .btn{display:block;text-align:center}
 .acts{flex-direction:column;align-items:stretch}
 .ghost{text-align:center}
@@ -133,11 +161,11 @@ nav .links a:not(.cta){display:none}
   <p class="sub">Sou lojista e ajudo outros lojistas a montar, integrar e escalar a loja virtual: Google Shopping sem bloqueio, catálogo para Google e Meta, plataforma e ERP conversando e IA trabalhando a favor da operação.</p>
   <div class="acts">
    <a class="btn" href="#produtos">Ver como eu posso te ajudar</a>
-   <a class="ghost" href="#gratis">Baixar os 15 erros (grátis)</a>
+   <a class="ghost" href="#gratis">Receber os 15 erros (grátis)</a>
   </div>
   <div class="strip"><span><b>Loja Integrada</b></span><span><b>Nuvemshop</b></span><span><b>Bling</b></span><span><b>Google Merchant</b></span><span><b>Google Ads</b></span><span><b>Meta</b></span><span><b>IA</b></span></div>
  </div>
- <div class="photo"><img src="fernando.jpg" alt="Fernando Tacini" width="476" height="840"><div class="badge"><b>De lojista para lojista</b>fundador da Vinerium</div></div>
+ <div class="photo"><img src="fernando.jpg" alt="Fernando Tacini" width="1152" height="1440" fetchpriority="high"><div class="badge"><b>De lojista para lojista</b>fundador da Vinerium</div></div>
 </div></header>
 
 <section class="alt"><div class="n">
@@ -153,7 +181,7 @@ nav .links a:not(.cta){display:none}
  <div class="n" style="padding:0"><span class="tag">O que eu resolvo</span>
  <h2>Tudo o que fica entre o seu produto <em>e a venda.</em></h2>
  <p>Quatro frentes que eu mesmo opero na minha loja, todos os dias.</p></div>
- <div class="steps" style="grid-template-columns:repeat(4,1fr)">
+ <div class="steps">
   <div class="step"><b>01</b><h3>Google sem bloqueio</h3><p>Merchant Center, Google Shopping, listagens gratuitas e Performance Max por margem. É o <strong style="color:#fff">Método Sem Bloqueio</strong>.</p></div>
   <div class="step"><b>02</b><h3>Catálogo que vende</h3><p>Títulos, fotos, categorias e GTIN prontos para Google e Meta, com um só cadastro alimentando tudo.</p></div>
   <div class="step"><b>03</b><h3>Loja + ERP</h3><p>Loja Integrada ou Nuvemshop conversando com o Bling: estoque, nota, frete e pedido sem retrabalho.</p></div>
@@ -174,7 +202,7 @@ nav .links a:not(.cta){display:none}
    <a class="ghost" href="https://www.fernandotacini.com/sem-bloqueio">Ver no checkout</a></div>
   <div class="of"><span class="k">GRÁTIS</span><h3>Os 15 erros de quem começa</h3><div class="pr">R$ 0</div>
    <ul><li>Plataforma, ERP e catálogo na ordem certa</li><li>O que trava a aprovação</li><li>Onde a margem some</li></ul>
-   <a class="ghost" href="#gratis">Baixar agora</a></div>
+   <a class="ghost" href="#gratis">Receber grátis</a></div>
  </div>
  <h3 class="cat">Para resolver com a minha ajuda</h3>
  <div class="offers">
@@ -195,13 +223,26 @@ nav .links a:not(.cta){display:none}
  <div class="lead">
   <div><span class="tag">Grátis</span><h2 style="font-size:clamp(28px,3.6vw,38px)">Os 15 erros de quem começa a <em>vender online.</em></h2><p>O checklist que eu gostaria de ter recebido no primeiro dia da minha loja.</p>
    <ul><li>Plataforma, ERP e catálogo na ordem certa</li><li>O que trava a aprovação no Google</li><li>Onde a margem some sem você ver</li></ul></div>
-  <div class="c"><a class="btn" href="15-erros-vender-online.pdf" download>Baixar o PDF grátis</a><p style="margin-top:14px;font-size:14px">Sem cadastro. Se gostar, me conta no X.</p></div>
+  <form class="lf" id="leadForm" novalidate>
+   <p class="ft">Receba o PDF no seu e-mail</p>
+   <label>Seu nome<input type="text" name="nome" autocomplete="given-name" required maxlength="80" placeholder="Como posso te chamar?"></label>
+   <label>Seu melhor e-mail<input type="email" name="email" autocomplete="email" required maxlength="120" placeholder="voce@sualoja.com.br"></label>
+   <label><span>WhatsApp <small>(opcional)</small></span><input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="(11) 99999-9999"></label>
+   <label class="hp" aria-hidden="true">Site<input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+   <input type="hidden" name="material" value="15-erros">
+   <input type="hidden" name="origem"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="referrer"><input type="hidden" name="pagina">
+   <label class="ck"><input type="checkbox" name="consent" value="sim" required> Quero receber o PDF e conteúdos do Fernando Tacini por e-mail. Posso cancelar quando quiser.</label>
+   <label class="ck"><input type="checkbox" name="wa_ok" value="sim"> Pode me chamar no WhatsApp também.</label>
+   <button class="btn" type="submit">Quero o PDF grátis</button>
+   <p class="fm" id="fmsg" role="status" aria-live="polite"></p>
+   <p class="priv">Sem spam. Seus dados ficam só comigo.</p>
+  </form>
  </div>
 </div></section>
 
 <section id="sobre" class="alt"><div class="n">
  <div class="me">
-  <img src="fernando.jpg" alt="Fernando Tacini" loading="lazy">
+  <img src="fernando.jpg" alt="Fernando Tacini" loading="lazy" width="1152" height="1440">
   <div>
    <span class="tag">Sobre</span>
    <h2 style="font-size:clamp(28px,3.6vw,38px)">Não sou guru. <em>Sou lojista.</em></h2>
@@ -222,5 +263,48 @@ nav .links a:not(.cta){display:none}
 </div></section>
 
 <footer><div class="w">© 2026 Fernando Tacini · <a href="https://www.linkedin.com/in/fernandotacini" target="_blank" rel="noopener">LinkedIn</a><br>Google, Google Shopping e Merchant Center são marcas do Google LLC. Este site não é afiliado ao Google.</div></footer>
+
+<script>
+(function(){
+  // >>> Cole aqui a URL do Apps Script (Implantar > App da Web), terminando em /exec
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwi2Wo5A0w9Paem8CV-IC1OoPQmLLArnjXwvsh8J4FFERwmxbGEcNQikbOlbLITfFj98g/exec';
+
+  var f = document.getElementById('leadForm');
+  if (!f) return;
+  var el = function(n){ return f.elements[n]; };
+  var q = new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign'].forEach(function(k){ el(k).value = q.get(k) || ''; });
+  el('origem').value = q.get('origem') || q.get('utm_source') || '';
+  el('referrer').value = document.referrer || '';
+  el('pagina').value = location.pathname;
+
+  var msg = document.getElementById('fmsg');
+  var btn = f.querySelector('button[type=submit]');
+  function erro(t, campo){ msg.className = 'fm err'; msg.textContent = t; if (campo) campo.focus(); }
+
+  f.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    msg.className = 'fm'; msg.textContent = '';
+    var nome = el('nome').value.trim();
+    var email = el('email').value.trim();
+    if (!nome) return erro('Me diz seu nome.', el('nome'));
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return erro('Confere o e-mail: é por ele que o PDF chega.', el('email'));
+    if (!el('consent').checked) return erro('Marque a caixinha para eu poder te mandar o PDF por e-mail.', el('consent'));
+    if (ENDPOINT.indexOf('https://script.google.com/') !== 0) return erro('Formulário em manutenção. Me chama no WhatsApp que eu te mando o PDF.');
+
+    btn.disabled = true; btn.textContent = 'Enviando...';
+    var dados = new URLSearchParams(new FormData(f));
+    fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: dados })
+      .then(function(){
+        try { sessionStorage.setItem('ft_nome', nome.split(' ')[0]); } catch(e) {}
+        location.href = 'obrigado.html';
+      })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = 'Quero o PDF grátis';
+        erro('Não consegui enviar agora. Tenta de novo ou me chama no WhatsApp.');
+      });
+  });
+})();
+</script>
 </body>
 </html>
