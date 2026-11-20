@@ -106,6 +106,15 @@ nav .links a.cta{background:var(--y);color:#111;font-weight:700;padding:9px 16px
 .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 .fm{font-size:14px;margin:0;min-height:0}
 .fm.err{color:#ff9b9b}
+button.ghost{background:none;font:inherit;font-weight:700;cursor:pointer}
+.mod{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px}
+.mod[hidden]{display:none}
+.mod-bg{position:absolute;inset:0;background:rgba(5,10,20,.75);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.mod-box{position:relative;width:100%;max-width:440px;max-height:calc(100vh - 32px);overflow:auto;background:#131f33;border:1.5px solid var(--y);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.mod-x{position:absolute;top:8px;right:10px;background:none;border:0;color:#a9b6cc;font-size:30px;line-height:1;cursor:pointer;padding:4px 8px}
+.mod-sub{font-size:15px;margin:0 0 4px;color:var(--mut)}
+body.travado{overflow:hidden}
+.lf [hidden]{display:none!important}
 .priv{font-size:12.5px;color:#6f7f99;margin:0;text-align:center}
 /* about */
 .me{display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:start}
@@ -208,22 +217,22 @@ nav .links a:not(.cta){display:none}
  <div class="offers">
   <div class="of"><span class="k">EU OLHO A SUA LOJA</span><h3>Auditoria completa do Merchant</h3><div class="pr">Sob consulta</div>
    <ul><li>Análise do site, catálogo e Merchant</li><li>Vídeo com o plano de correção</li><li>Prioridades em ordem</li></ul>
-   <a class="ghost" href="https://wa.me/5511995182855?text=Oi%20Fernando%2C%20quero%20saber%20da%20auditoria%20do%20Merchant">Pedir auditoria</a></div>
+   <button class="ghost" type="button" data-lead="auditoria">Pedir auditoria</button></div>
   <div class="of"><span class="k">EU FAÇO PRA VOCÊ</span><h3>Google e catálogo configurados</h3><div class="pr">Sob consulta</div>
    <ul><li>Merchant Center configurado e aprovado</li><li>Catálogo corrigido para Google e Meta</li><li>Campanha pronta para rodar</li></ul>
-   <a class="ghost" href="https://wa.me/5511995182855?text=Oi%20Fernando%2C%20quero%20que%20voc%C3%AA%20configure%20minha%20loja%20no%20Google">Falar comigo</a></div>
+   <button class="ghost" type="button" data-lead="config-google">Falar comigo</button></div>
   <div class="of"><span class="k">IMPLANTAÇÃO</span><h3>Loja + ERP do zero</h3><div class="pr">Sob consulta</div>
    <ul><li>Loja Integrada ou Nuvemshop</li><li>Integração com o Bling</li><li>Cadastro, frete, pagamento e nota</li></ul>
-   <a class="ghost" href="https://wa.me/5511995182855?text=Oi%20Fernando%2C%20quero%20montar%20minha%20loja%20virtual">Quero montar minha loja</a></div>
+   <button class="ghost" type="button" data-lead="loja-erp">Quero montar minha loja</button></div>
  </div>
- <div class="soon"><span class="k">EM BREVE</span><div><h3>Assistente de IA do catálogo</h3><p style="margin:0">Você conversa com ele e recebe o catálogo arrumado no padrão do Google. Entre na lista e seja o primeiro a testar.</p></div><a class="btn" href="https://wa.me/5511995182855?text=Oi%20Fernando%2C%20quero%20entrar%20na%20lista%20do%20assistente%20de%20IA">Entrar na lista</a></div>
+ <div class="soon" id="lista"><span class="k">EM BREVE</span><div><h3>Assistente de IA do catálogo</h3><p style="margin:0">Você conversa com ele e recebe o catálogo arrumado no padrão do Google. Entre na lista e seja o primeiro a testar.</p></div><button class="btn" type="button" data-lead="lista-assistente-ia">Entrar na lista</button></div>
 </div></section>
 
 <section id="gratis"><div class="w">
  <div class="lead">
   <div><span class="tag">Grátis</span><h2 style="font-size:clamp(28px,3.6vw,38px)">Os 15 erros de quem começa a <em>vender online.</em></h2><p>O checklist que eu gostaria de ter recebido no primeiro dia da minha loja.</p>
    <ul><li>Plataforma, ERP e catálogo na ordem certa</li><li>O que trava a aprovação no Google</li><li>Onde a margem some sem você ver</li></ul></div>
-  <form class="lf" id="leadForm" novalidate>
+  <form class="lf" id="leadForm" data-redirect="obrigado.html" data-btn="Quero o PDF grátis" data-oque="o PDF" novalidate>
    <p class="ft">Receba o PDF no seu e-mail</p>
    <label>Seu nome<input type="text" name="nome" autocomplete="given-name" required maxlength="80" placeholder="Como posso te chamar?"></label>
    <label>Seu melhor e-mail<input type="email" name="email" autocomplete="email" required maxlength="120" placeholder="voce@sualoja.com.br"></label>
@@ -234,7 +243,7 @@ nav .links a:not(.cta){display:none}
    <label class="ck"><input type="checkbox" name="consent" value="sim" required> Quero receber o PDF e conteúdos do Fernando Tacini por e-mail. Posso cancelar quando quiser.</label>
    <label class="ck"><input type="checkbox" name="wa_ok" value="sim"> Pode me chamar no WhatsApp também.</label>
    <button class="btn" type="submit">Quero o PDF grátis</button>
-   <p class="fm" id="fmsg" role="status" aria-live="polite"></p>
+   <p class="fm" role="status" aria-live="polite"></p>
    <p class="priv">Sem spam. Seus dados ficam só comigo.</p>
   </form>
  </div>
@@ -262,47 +271,99 @@ nav .links a:not(.cta){display:none}
  </div>
 </div></section>
 
+<div class="mod" id="leadMod" hidden>
+ <div class="mod-bg" data-fecha></div>
+ <form class="lf mod-box" id="modForm" novalidate>
+  <button type="button" class="mod-x" data-fecha aria-label="Fechar">×</button>
+  <p class="ft" id="modTit"></p>
+  <p class="mod-sub" id="modSub"></p>
+  <label>Seu nome<input type="text" name="nome" autocomplete="given-name" required maxlength="80" placeholder="Como posso te chamar?"></label>
+  <label>Seu melhor e-mail<input type="email" name="email" autocomplete="email" required maxlength="120" placeholder="voce@sualoja.com.br"></label>
+  <label><span>WhatsApp <small id="waOpc">(opcional)</small></span><input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="(11) 99999-9999"></label>
+  <label id="lojaCampo"><span>Site da sua loja <small>(se já tiver)</small></span><input type="text" name="loja" inputmode="url" maxlength="120" placeholder="www.sualoja.com.br"></label>
+  <label class="hp" aria-hidden="true">Site<input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+  <input type="hidden" name="material">
+  <input type="hidden" name="origem"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="referrer"><input type="hidden" name="pagina">
+  <label class="ck"><input type="checkbox" name="consent" value="sim" required> <span id="modCk"></span></label>
+  <label class="ck" id="waOkCampo"><input type="checkbox" name="wa_ok" value="sim"> Pode me chamar no WhatsApp também.</label>
+  <button class="btn" type="submit"></button>
+  <p class="fm" role="status" aria-live="polite"></p>
+  <p class="priv">Sem spam. Seus dados ficam só comigo.</p>
+ </form>
+</div>
+
 <footer><div class="w">© 2026 Fernando Tacini · <a href="https://www.linkedin.com/in/fernandotacini" target="_blank" rel="noopener">LinkedIn</a><br>Google, Google Shopping e Merchant Center são marcas do Google LLC. Este site não é afiliado ao Google.</div></footer>
 
 <script>
 (function(){
-  // >>> Cole aqui a URL do Apps Script (Implantar > App da Web), terminando em /exec
   var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwi2Wo5A0w9Paem8CV-IC1OoPQmLLArnjXwvsh8J4FFERwmxbGEcNQikbOlbLITfFj98g/exec';
-
-  var f = document.getElementById('leadForm');
-  if (!f) return;
-  var el = function(n){ return f.elements[n]; };
   var q = new URLSearchParams(location.search);
-  ['utm_source','utm_medium','utm_campaign'].forEach(function(k){ el(k).value = q.get(k) || ''; });
-  el('origem').value = q.get('origem') || q.get('utm_source') || '';
-  el('referrer').value = document.referrer || '';
-  el('pagina').value = location.pathname;
 
-  var msg = document.getElementById('fmsg');
-  var btn = f.querySelector('button[type=submit]');
-  function erro(t, campo){ msg.className = 'fm err'; msg.textContent = t; if (campo) campo.focus(); }
+  var LEADS = {
+    'auditoria': {t:'Pedir auditoria do Merchant', s:'Me conta da sua loja. Eu te chamo para combinar a análise.', b:'Pedir minha auditoria', ck:'Quero receber o contato e conteúdos do Fernando Tacini por e-mail. Posso cancelar quando quiser.', wa:true, loja:true, go:'recebido.html', nome:'Auditoria completa do Merchant'},
+    'config-google': {t:'Google e catálogo configurados', s:'Me conta da sua loja. Eu te chamo para entender o que precisa e passar o orçamento.', b:'Quero que você configure', ck:'Quero receber o contato e conteúdos do Fernando Tacini por e-mail. Posso cancelar quando quiser.', wa:true, loja:true, go:'recebido.html', nome:'Google e catálogo configurados'},
+    'loja-erp': {t:'Loja + ERP do zero', s:'Me conta em que pé está. Eu te chamo para entender o projeto e passar o orçamento.', b:'Quero montar minha loja', ck:'Quero receber o contato e conteúdos do Fernando Tacini por e-mail. Posso cancelar quando quiser.', wa:true, loja:true, go:'recebido.html', nome:'Loja + ERP do zero'},
+    'lista-assistente-ia': {t:'Lista de espera do Assistente de IA', s:'Seja um dos primeiros a testar. Eu aviso por e-mail quando abrir.', b:'Entrar na lista de espera', ck:'Quero receber por e-mail o aviso do lançamento e conteúdos do Fernando Tacini. Posso cancelar quando quiser.', wa:false, loja:false, go:'lista.html', nome:'Assistente de IA do catálogo'}
+  };
+  var mod = document.getElementById('leadMod'), mf = document.getElementById('modForm');
+  function abreMod(k){
+    var c = LEADS[k]; if (!c) return;
+    mf.elements['material'].value = k;
+    mf.setAttribute('data-redirect', c.go); mf.setAttribute('data-btn', c.b);
+    mf.setAttribute('data-oque', c.wa ? 'o meu retorno' : 'o aviso do lançamento');
+    mf.setAttribute('data-servico', c.nome); mf.setAttribute('data-wareq', c.wa ? '1' : '');
+    document.getElementById('modTit').textContent = c.t;
+    document.getElementById('modSub').textContent = c.s;
+    document.getElementById('modCk').textContent = c.ck;
+    document.getElementById('waOpc').textContent = c.wa ? '(para eu te chamar)' : '(opcional)';
+    document.getElementById('lojaCampo').hidden = !c.loja;
+    document.getElementById('waOkCampo').hidden = c.wa;
+    mf.elements['wa_ok'].checked = false;
+    mf.querySelector('button[type=submit]').textContent = c.b;
+    mf.querySelector('.fm').textContent = '';
+    mod.hidden = false; document.body.classList.add('travado');
+    setTimeout(function(){ mf.elements['nome'].focus(); }, 50);
+  }
+  function fechaMod(){ mod.hidden = true; document.body.classList.remove('travado'); }
+  document.querySelectorAll('[data-lead]').forEach(function(b){ b.addEventListener('click', function(){ abreMod(b.getAttribute('data-lead')); }); });
+  mod.querySelectorAll('[data-fecha]').forEach(function(x){ x.addEventListener('click', fechaMod); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !mod.hidden) fechaMod(); });
 
-  f.addEventListener('submit', function(ev){
-    ev.preventDefault();
-    msg.className = 'fm'; msg.textContent = '';
-    var nome = el('nome').value.trim();
-    var email = el('email').value.trim();
-    if (!nome) return erro('Me diz seu nome.', el('nome'));
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return erro('Confere o e-mail: é por ele que o PDF chega.', el('email'));
-    if (!el('consent').checked) return erro('Marque a caixinha para eu poder te mandar o PDF por e-mail.', el('consent'));
-    if (ENDPOINT.indexOf('https://script.google.com/') !== 0) return erro('Formulário em manutenção. Me chama no WhatsApp que eu te mando o PDF.');
+  document.querySelectorAll('form.lf').forEach(function(f){
+    var el = function(n){ return f.elements[n]; };
+    ['utm_source','utm_medium','utm_campaign'].forEach(function(k){ el(k).value = q.get(k) || ''; });
+    el('origem').value = q.get('origem') || q.get('utm_source') || '';
+    el('referrer').value = document.referrer || '';
+    el('pagina').value = location.pathname;
 
-    btn.disabled = true; btn.textContent = 'Enviando...';
-    var dados = new URLSearchParams(new FormData(f));
-    fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: dados })
-      .then(function(){
-        try { sessionStorage.setItem('ft_nome', nome.split(' ')[0]); } catch(e) {}
-        location.href = 'obrigado.html';
-      })
-      .catch(function(){
-        btn.disabled = false; btn.textContent = 'Quero o PDF grátis';
-        erro('Não consegui enviar agora. Tenta de novo ou me chama no WhatsApp.');
-      });
+    var msg = f.querySelector('.fm');
+    var btn = f.querySelector('button[type=submit]');
+    var oque = f.getAttribute('data-oque');
+    function erro(t, campo){ msg.className = 'fm err'; msg.textContent = t; if (campo) campo.focus(); }
+
+    f.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      msg.className = 'fm'; msg.textContent = '';
+      var nome = el('nome').value.trim();
+      var email = el('email').value.trim();
+      if (!nome) return erro('Me diz seu nome.', el('nome'));
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return erro('Confere o e-mail: é por ele que chega ' + oque + '.', el('email'));
+      var wa = el('whatsapp').value.replace(/\D/g,'');
+      if (f.getAttribute('data-wareq') && wa.length < 10) return erro('Coloca seu WhatsApp com DDD para eu te chamar.', el('whatsapp'));
+      if (f.getAttribute('data-wareq')) el('wa_ok').checked = true;
+      if (!el('consent').checked) return erro('Marque a caixinha para eu poder te mandar ' + oque + ' por e-mail.', el('consent'));
+
+      btn.disabled = true; btn.textContent = 'Enviando...';
+      fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(f)) })
+        .then(function(){
+          try { sessionStorage.setItem('ft_nome', nome.split(' ')[0]); sessionStorage.setItem('ft_servico', f.getAttribute('data-servico') || ''); } catch(e) {}
+          location.href = f.getAttribute('data-redirect');
+        })
+        .catch(function(){
+          btn.disabled = false; btn.textContent = f.getAttribute('data-btn');
+          erro('Não consegui enviar agora. Tenta de novo ou me chama no WhatsApp.');
+        });
+    });
   });
 })();
 </script>
